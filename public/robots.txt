@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://deerprojects.github.io/portfolio-site/sitemap.xml
