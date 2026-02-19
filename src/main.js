@@ -1,81 +1,107 @@
 import "./style.css";
 
-const skills = [
-  "C#", ".NET", "REST APIs", "SQL",
-  "Entity Framework (basic)", "Git & GitHub",
-  "Azure Fundamentals (AZ-900)",
-  "C++", "Unreal Engine"
+const links = [
+  { label: "Email", value: "emreelbir0@gmail.com", href: "mailto:emreelbir0@gmail.com" },
+  { label: "Phone", value: "+31 641770579", href: "tel:+31641770579" },
+  { label: "GitHub", value: "github.com/emreelbir", href: "https://github.com/emreelbir" },
+  { label: "LinkedIn", value: "linkedin.com/in/emre-elbir-0739921a6", href: "https://www.linkedin.com/in/emre-elbir-0739921a6/" }
 ];
 
-const links = [
-  { label: "📧 emreelbir0@gmail.com", href: "mailto:emreelbir0@gmail.com" },
-  { label: "📞 +31 641770579", href: "tel:+31641770579" },
-  { label: "💻 github.com/emreelbir", href: "https://github.com/emreelbir" },
-  { label: "💻 github.com/DeerProjects", href: "https://github.com/DeerProjects" },
-  { label: "🔗 LinkedIn", href: "https://www.linkedin.com/in/emre-elbir-76a71235a/" },
-  { label: "🔗 LinkedIn (Alt)", href: "https://www.linkedin.com/in/emre-elbir-0739921a6/" },
-];
+const apiExample = {
+  endpoint: "POST /api/posts",
+  request: {
+    content: "Test post",
+    userId: 999
+  },
+  error: {
+    status: "404 Not Found",
+    body: {
+      error: "UserNotFound",
+      message: "User does not exist"
+    }
+  }
+};
 
 const app = document.querySelector("#app");
 
 app.innerHTML = `
-  <div class="wrap">
-    <div class="grid">
-      <div class="card">
-        <h1>Emre Elbir</h1>
-        <p class="muted">Junior .NET Backend Developer (Azure Cloud)</p>
-        <p>
-          Backend developer with 2+ years of experience building RESTful APIs using C# and .NET.
-          Currently expanding into Azure cloud and aiming to grow in production environments.
+  <div class="page">
+
+    <header class="hero">
+      <h1>Emre Elbir</h1>
+      <p class="subtitle">Junior .NET Backend Developer • Amsterdam</p>
+      <p class="lead">
+        I build predictable and maintainable REST APIs using C# and .NET,
+        focusing on validation, consistent error handling, and clean integration
+        between frontend requests and relational data.
+      </p>
+
+      <div class="contacts">
+        ${links.map(l => `
+          <a class="contact" href="${l.href}" target="${l.href.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">
+            <span class="contactLabel">${l.label}</span>
+            <span class="contactValue">${l.value}</span>
+          </a>
+        `).join("")}
+      </div>
+    </header>
+
+    <main class="layout">
+
+      <section class="card highlight">
+        <h2>Moody — Backend Case Study</h2>
+        <p class="muted">.NET Web API • Entity Framework • SQL</p>
+
+        <h3>My Responsibility</h3>
+        <ul class="list">
+          <li>Owned small backend features from implementation to pull request</li>
+          <li>Validated requests and standardized error responses</li>
+          <li>Debugged integration issues between frontend and backend behavior</li>
+        </ul>
+
+        <h3>Problem & Decision</h3>
+        <ul class="list">
+          <li>Frontend occasionally sent invalid user IDs during integration.</li>
+          <li>Instead of allowing inconsistent database state, I added domain-level checks.</li>
+          <li>Introduced structured error responses to keep API behavior predictable.</li>
+        </ul>
+
+        <h3>Example API Interaction</h3>
+        <div class="codeblock">
+          <div class="codeTitle">${apiExample.endpoint}</div>
+          <pre><code>${JSON.stringify(apiExample.request, null, 2)}</code></pre>
+
+          <div class="codeTitle">${apiExample.error.status}</div>
+          <pre><code>${JSON.stringify(apiExample.error.body, null, 2)}</code></pre>
+        </div>
+
+        <p class="muted small">
+          Focus: keeping backend behavior predictable for other developers during integration.
         </p>
-        <div class="row">
-          ${links.map(l => `<a class="link" href="${l.href}" target="${l.href.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${l.label}</a>`).join("")}
-        </div>
-      </div>
+      </section>
 
-      <div class="card">
-        <h2>Skills</h2>
-        <div class="row">
-          ${skills.map(s => `<span class="pill">${s}</span>`).join("")}
-        </div>
+      <section class="card">
+        <h2>Experience</h2>
+        <p class="muted">Collaborative Backend Developer — Remote Team (2022–2024)</p>
+        <ul class="list">
+          <li>Worked in shared repositories with PR reviews and merge conflict resolution</li>
+          <li>Implemented REST endpoints with validation and consistent responses</li>
+          <li>Connected application logic to relational database operations</li>
+          <li>Containerized services locally using Docker</li>
+        </ul>
+      </section>
 
-        <div class="section">
-          <h2>Certifications</h2>
-          <p class="small">Microsoft Azure Fundamentals (AZ-900)</p>
-        </div>
+      <section class="card">
+        <h2>Quick Info</h2>
+        <p class="small">Certification: Microsoft Azure Fundamentals (AZ-900)</p>
+        <p class="small">Languages: English B2 • Turkish Native • Dutch A2</p>
+      </section>
 
-        <div class="section">
-          <h2>Languages</h2>
-          <p class="small">English B2 • Turkish Native • Dutch A2</p>
-        </div>
-      </div>
-    </div>
+    </main>
 
-    <div class="section card">
-      <h2>Experience</h2>
-      <p><strong>Junior Backend Developer — Remote Team (2022–2024)</strong></p>
-      <ul class="list">
-        <li>Developed backend services using C# and .NET</li>
-        <li>Designed RESTful APIs and data flow for features</li>
-        <li>Worked with relational SQL databases and basic modeling</li>
-        <li>Debugged issues and improved existing code</li>
-      </ul>
-    </div>
+    <footer class="footer">
+      © ${new Date().getFullYear()} Emre Elbir
+    </footer>
 
-    <div class="section card">
-      <h2>Projects</h2>
-      <p><strong>Moody — Team Software Project</strong></p>
-      <p class="muted">Backend components, API endpoints, team collaboration via Git</p>
-      <div class="row">
-        <a class="link" href="https://github.com/lets-do-it-pl" target="_blank" rel="noreferrer">lets-do-it-pl</a>
-        <a class="link" href="https://github.com/KeepCodingPL" target="_blank" rel="noreferrer">KeepCodingPL</a>
-        <a class="link" href="https://github.com/emreelbir" target="_blank" rel="noreferrer">Personal GitHub</a>
-      </div>
-    </div>
-
-    <div class="footer">
-      <span>© ${new Date().getFullYear()} Emre Elbir</span>
-      <span>Built with Vite</span>
-    </div>
   </div>
 `;
