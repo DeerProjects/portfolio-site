@@ -1,10 +1,31 @@
 import "./style.css";
 
 const links = [
-  { label: "Email", value: "emreelbir0@gmail.com", href: "mailto:emreelbir0@gmail.com" },
-  { label: "Phone", value: "+31 641770579", href: "tel:+31641770579" },
-  { label: "GitHub", value: "github.com/emreelbir", href: "https://github.com/emreelbir" },
-  { label: "LinkedIn", value: "linkedin.com/in/emre-elbir-0739921a6", href: "https://www.linkedin.com/in/emre-elbir-0739921a6/" }
+  { 
+    label: "Email",
+    value: "emreelbir0@gmail.com",
+    href: "mailto:emreelbir0@gmail.com"
+  },
+  { 
+    label: "Phone",
+    value: "+31 641770579",
+    href: "tel:+31641770579"
+  },
+  { 
+    label: "GitHub",
+    value: "github.com/emreelbir",
+    href: "https://github.com/emreelbir"
+  },
+  { 
+    label: "GitHub (DeerProjects)",
+    value: "github.com/DeerProjects",
+    href: "https://github.com/DeerProjects"
+  },
+  { 
+    label: "LinkedIn",
+    value: "linkedin.com/in/emre-elbir-0739921a6",
+    href: "https://www.linkedin.com/in/emre-elbir-0739921a6/"
+  }
 ];
 
 const apiExample = {
