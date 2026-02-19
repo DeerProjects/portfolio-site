@@ -58,7 +58,6 @@ app.innerHTML = `
         <li>Developed backend services using C# and .NET</li>
         <li>Designed RESTful APIs and data flow for features</li>
         <li>Worked with relational SQL databases and basic modeling</li>
-        <li>Collaborated with frontend and QA in team workflows</li>
         <li>Debugged issues and improved existing code</li>
       </ul>
     </div>
